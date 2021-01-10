@@ -1,0 +1,11 @@
+me.Temp=parseFloat(Temp);
+if (me.Temp > 28){
+    me.Led=2;
+}
+else if (me.Temp >= 24){
+   me.Led=1;
+}
+else{
+    me.Led=0;
+}
+result={Temp:me.Temp,Led:me.Led};
