@@ -17,7 +17,7 @@ DHT dht(DHTPIN, DHT11);
 LiquidCrystal_I2C lcd(0x27,20,4);
 
 // Sensor
-#define sensorCount 3
+#define sensorCount 2
 char* sensorName[] = {"Temp","Led"};
 float sensorValues[sensorCount];
 
