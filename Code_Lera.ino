@@ -14,7 +14,7 @@ DHT dht(DHTPIN, DHT11);
 
 // Display
 #include <LiquidCrystal_I2C.h>
-LiquidCrystal_I2C lcd(0x27,16,2);
+LiquidCrystal_I2C lcd(0x27,20,4);
 
 // Sensor
 #define sensorCount 3
@@ -232,6 +232,5 @@ void loop() {
   sendThingWorxStream();
   sensor();
   printData();
-  Serial.println("/////////////////////////////////////////////////////////////////////////////");
-  delay(1000);
+  delay(100);
 }
