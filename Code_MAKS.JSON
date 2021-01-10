@@ -1,0 +1,4 @@
+me.Data=parseFloat(Data);
+me.Indic = me.Data / 100 * 20;
+
+result={Data:me.Data,Indic:me.Indic};
