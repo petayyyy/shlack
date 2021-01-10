@@ -38,15 +38,15 @@ float sensorValues[sensorCount];
 Servo myservo;  
 
 // WiFi config
-char ssid[] = "Galaxy S10b57e";
-char pass[] = "1234567890";
+char ssid[] = "***********";
+char pass[] = "***********";
 
 // ThingWorx
-char iot_server[] = "192.168.43.36";
-IPAddress iot_address(192,168,43,36);
-char appKey[] = "30bf4fe9-5d55-4ddb-990a-3cdcbdfa8fb2";
-char thingName[] = "Kyrsovay";
-char serviceName[] = "Code";
+char iot_server[] = "*************";
+IPAddress iot_address(***,***,***,***);
+char appKey[] = "*************************************";
+char thingName[] = "***************";
+char serviceName[] = "***********";
 
 // Timer
 long timer_iot_timeout = 0;
