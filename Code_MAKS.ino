@@ -15,23 +15,23 @@ LiquidCrystal_I2C lcd(0x27,20,4);
 
 // Sensor
 #define sensorCount 2
-char* sensorName[] = {"Data","Indic"};
+char* sensorName[] = {"Data","Indicator"};
 float sensorValues[sensorCount];
 
 // Name Sensor
 #define  Data 0
-#define  Indic 1
+#define  Indicator 1
 
 // WiFi config
-char ssid[] = "***********";
-char pass[] = "***********";
+char ssid[] = "Galaxy S10b57e";
+char pass[] = "1234567890";
 
 // ThingWorx
-char iot_server[] = "*************";
-IPAddress iot_address(***,***,***,***);
-char appKey[] = "*************************************";
-char thingName[] = "***************";
-char serviceName[] = "***********";
+char iot_server[] = "pp-2101111453dh.devportal.ptc.io";
+//IPAddress iot_address(192,168,43,36);
+char appKey[] = "c8036c7b-af01-4800-8897-c51c539586c7";
+char thingName[] = "Thing1";
+char serviceName[] = "code1";
 
 // Timer
 long timer_iot_timeout = 0;
@@ -88,7 +88,7 @@ void printData()
   Serial.println();
 }
 void print_line(){
-  for (int i = 0; i < sensorValues[Indic]; i++)
+  for (int i = 0; i < sensorValues[Indicator]; i++)
     {
       lcd.print(".");
       Serial.print(".");
@@ -106,7 +106,7 @@ void sendThingWorxStream()
 {
   // Подключение к серверу
   Serial.println("Connecting to IoT server...");
-  if (client.connect(iot_address, 80))
+  if (client.connect(iot_server, 8080))
   {
     // Проверка установления соединения
     if (client.connected())
@@ -168,7 +168,7 @@ void sendThingWorxStream()
       //Serial.println(buff);
       StaticJsonBuffer<BUFF_LENGTH> jsonBuffer;
       JsonObject& json_array = jsonBuffer.parseObject(buff);
-      sensorValues[Indic] = json_array["Indic"];
+      sensorValues[Indicator] = json_array["Indicator"];
       
       // Закрываем соединение
       client.stop();
