@@ -1,7 +1,6 @@
 // WiFi
 #include <WiFi.h>
 #include <WiFiClient.h>
-WiFiClient client;
 #include <Wire.h>
 #include <OneWire.h>
 #include <ArduinoJson.h>
@@ -23,6 +22,7 @@ float sensorValues[sensorCount];
 #define  Indicator 1
 
 // WiFi config
+WiFiServer server(80);
 char ssid[] = "Galaxy S10b57e";
 char pass[] = "1234567890";
 
@@ -103,17 +103,18 @@ void lcd_printstr(String str1)
 }
 
 void sendThingWorxStream()
-{
+{ 
+  WiFiClient client = server.available();
   // Подключение к серверу
   Serial.println("Connecting to IoT server...");
-  if (client.connect(iot_server, 8080))
+  if (1)
   {
     // Проверка установления соединения
-    if (client.connected())
+    if (1)
     {
       // Отправка заголовка сетевого пакета
       Serial.println("Sending data to IoT server...\n");
-      Serial.print("POST /Thingworx/Things/");  client.print("POST /Thingworx/Things/");
+      Serial.print("POST pp-2101111453dh.devportal.ptc.io/Thingworx/Things/");  client.print("POST pp-2101111453dh.devportal.ptc.io/Thingworx/Things/");
       Serial.print(thingName);  client.print(thingName);
       Serial.print("/Services/"); client.print("/Services/");
       Serial.print(serviceName); client.print(serviceName);
@@ -164,8 +165,8 @@ void sendThingWorxStream()
       }
       buff[iii] = '}';
       buff[iii + 1] = '\0';
-      
-      //Serial.println(buff);
+      Serial.println("////////////////");
+      Serial.println(buff);
       StaticJsonBuffer<BUFF_LENGTH> jsonBuffer;
       JsonObject& json_array = jsonBuffer.parseObject(buff);
       sensorValues[Indicator] = json_array["Indicator"];
@@ -179,5 +180,5 @@ void loop() {
   GetData();
   sendThingWorxStream();
   printData();
-  delay(300);
+  delay(3000);
 }
