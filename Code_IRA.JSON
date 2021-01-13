@@ -1,0 +1,21 @@
+me.Temp=parseFloat(Temp);
+if (me.Temp > 28){
+    me.Servo_door= parseFloat(Servo_door) - (me.Temp - 27);
+    me.Led=3;
+}
+else if (me.Temp >= 24){
+    me.Servo_door= parseFloat(Servo_door);
+    me.Led=2;
+}
+else if (me.Temp > 14){
+    me.Servo_door= parseFloat(Servo_door) + 10;
+    me.Led=1;
+}
+else{
+    me.Servo_door= parseFloat(Servo_door) + 20;
+    me.Led=0;
+}
+if (me.Servo_door < 0){
+    me.Servo_door = 0;
+}
+result={Temp:me.Temp,Servo_door:me.Servo_door,Led:me.Led};
